@@ -26,6 +26,7 @@
                         <td class="text-center">
                             <button type="button" class="btn btn-danger btn-sm">Hapus</button>
                             <button type="button" class="btn btn-warning btn-sm">Edit</button>
+                            <a href="{{route ('detail-dosen', ['nidn'=>$item->nidn])}}" class="btn btn-info btn-sm">Detail</a>
                         </td>
                     </tr>
                     @endforeach
