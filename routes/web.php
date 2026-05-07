@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\MataKuliahController;
 use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\KrsController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -26,4 +27,4 @@ Route::get('/mahasiswa', [MahasiswaController::class, 'index'])->name('mahasiswa
 Route::get('/mahasiswa/create', [MahasiswaController::class, 'create'])->name('form-create-mahasiswa');
 Route::post('/mahasiswa/store', [MahasiswaController::class, 'store'])->name('store-mahasiswa');
 
-
+Route::get('/krs', [KrsController::class, 'index'])->name('krs');
