@@ -17,12 +17,14 @@ return new class extends Migration
             $table->foreign('npm')
                 ->references('npm')
                 ->on('mahasiswa')
-                ->onDelete('cascade');
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
             $table->char('kode_matakuliah',8); 
             $table->foreign('kode_matakuliah')
                 ->references('kode_matakuliah')
                 ->on('matakuliah')
-                ->onDelete('cascade');
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
             $table->timestamps();
         });
     }

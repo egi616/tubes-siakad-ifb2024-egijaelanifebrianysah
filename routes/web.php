@@ -19,6 +19,10 @@ Route::get('/dosen/create', [DosenController::class, 'create'])->name('form-crea
 Route::post('/dosen/store', [DosenController::class, 'store'])->name('store-dosen');
 Route::get('/detail-dosen/{nidn}/detail-data-dosen', [DosenController::class, 'show'])->name('detail-dosen');
 Route::delete('/dosen/{nidn}/delete-data-dosen', [DosenController::class, 'destroy'])->name('delete-dosen');
+//edit
+Route::get('/edit-dosen/{nidn}/edit-data-dosen', [DosenController::class, 'edit'])->name('edit-dosen');
+Route::put('/update-dosen/{nidn}/update-data-dosen', [DosenController::class, 'update'])->name('update');
+
 
 Route::get('/matakuliah', [MataKuliahController::class, 'index'])->name('matakuliah');
 Route::get('/matakuliah/create', [MataKuliahController::class, 'create'])->name('form-create-matakuliah');

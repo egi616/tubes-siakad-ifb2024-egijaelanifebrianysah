@@ -18,7 +18,8 @@ return new class extends Migration
             $table->foreign('nidn')
                 ->references('nidn')
                 ->on('dosen')
-                ->onDelete('cascade');
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
             $table->string('nama',50);
             $table->timestamps();
         });

@@ -29,7 +29,7 @@
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
                             </form>
-                            <button type="button" class="btn btn-warning btn-sm">Edit</button>
+                            <a href="{{route ('edit-dosen', ['nidn'=>$item->nidn])}}" class="btn btn-warning btn-sm">Edit</a>
                             <a href="{{route ('detail-dosen', ['nidn'=>$item->nidn])}}" class="btn btn-info btn-sm">Detail</a>
                         </td>
                     </tr>
