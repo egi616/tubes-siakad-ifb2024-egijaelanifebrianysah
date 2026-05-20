@@ -73,8 +73,12 @@ class DosenController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $nidn)
     {
         //
+        $dataDosen = Dosen::findOrFail($nidn);
+        $dataDosen->delete();
+
+        return redirect()->route('dosen')->with('succes', 'Data dosen berhasil di hapus');
     }
 }

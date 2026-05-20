@@ -24,7 +24,11 @@
                         <td>{{$item->nidn}}</td>
                         <td>{{$item->nama}}</td>
                         <td class="text-center">
-                            <button type="button" class="btn btn-danger btn-sm">Hapus</button>
+                            <form action="{{route ('delete-dosen', ['nidn'=>$item->nidn])}}" method="POST" onsubmit="return confirm ('Apakah anda yakin akan menghapus buku ini?')"> 
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
+                            </form>
                             <button type="button" class="btn btn-warning btn-sm">Edit</button>
                             <a href="{{route ('detail-dosen', ['nidn'=>$item->nidn])}}" class="btn btn-info btn-sm">Detail</a>
                         </td>
