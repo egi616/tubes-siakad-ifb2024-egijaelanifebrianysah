@@ -21,7 +21,7 @@ Route::get('/detail-dosen/{nidn}/detail-data-dosen', [DosenController::class, 's
 Route::delete('/dosen/{nidn}/delete-data-dosen', [DosenController::class, 'destroy'])->name('delete-dosen');
 //edit
 Route::get('/edit-dosen/{nidn}/edit-data-dosen', [DosenController::class, 'edit'])->name('edit-dosen');
-Route::put('/update-dosen/{nidn}/update-data-dosen', [DosenController::class, 'update'])->name('update');
+Route::put('/update-dosen/{nidn}/update-data-dosen', [DosenController::class, 'update'])->name('update-dosen');
 
 
 Route::get('/matakuliah', [MataKuliahController::class, 'index'])->name('matakuliah');
@@ -31,5 +31,9 @@ Route::post('/matakuliah/store', [MataKuliahController::class, 'store'])->name('
 Route::get('/mahasiswa', [MahasiswaController::class, 'index'])->name('mahasiswa');
 Route::get('/mahasiswa/create', [MahasiswaController::class, 'create'])->name('form-create-mahasiswa');
 Route::post('/mahasiswa/store', [MahasiswaController::class, 'store'])->name('store-mahasiswa');
+Route::get('/detail-mahasiswa/{npm}/detail-data-mahasiswa', [MahasiswaController::class, 'show'])->name('detail-mahasiswa');
+Route::delete('/mahasiswa/{npm}/delete-data-mahasiswa', [MahasiswaController::class, 'destroy'])->name('delete-mahasiswa');
+Route::get('/edit-mahasiswa/{npm}/edit-data-mahasiswa', [MahasiswaController::class, 'edit'])->name('edit-mahasiswa');
+Route::put('/update-mahasiswa/{npm}/update-data-mahasiswa', [MahasiswaController::class, 'update'])->name('update-mahasiswa');
 
 Route::get('/krs', [KrsController::class, 'index'])->name('krs');

@@ -24,7 +24,7 @@
                         <td>{{$item->nidn}}</td>
                         <td>{{$item->nama}}</td>
                         <td class="text-center">
-                            <form action="{{route ('delete-dosen', ['nidn'=>$item->nidn])}}" method="POST" onsubmit="return confirm ('Apakah anda yakin akan menghapus buku ini?')"> 
+                            <form action="{{route ('delete-dosen', ['nidn'=>$item->nidn])}}" method="POST" onsubmit="return confirm ('Apakah anda yakin akan menghapus data dosen ini?')"> 
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn-sm">Hapus</button>

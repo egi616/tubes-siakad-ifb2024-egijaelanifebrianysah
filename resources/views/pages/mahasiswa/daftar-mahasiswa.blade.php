@@ -25,8 +25,13 @@
                         <td>{{$item->nidn}}</td>
                         <td>{{$item->nama}}</td>
                         <td class="text-center">
-                            <button type="button" class="btn btn-danger btn-sm">Hapus</button>
-                            <button type="button" class="btn btn-warning btn-sm">Edit</button>
+                            <form action="{{route ('delete-mahasiswa', ['npm'=>$item->npm])}}" method="POST" onsubmit="return confirm ('Apakah anda yakin akan menghapus data mahasiswa ini?')"> 
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
+                            </form>
+                            <a href="{{route ('edit-mahasiswa', ['npm'=>$item->npm])}}" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="{{route ('detail-mahasiswa', ['npm'=>$item->npm])}}" class="btn btn-info btn-sm">Detail</a>
                         </td>
                     </tr>
                     @endforeach

@@ -7,7 +7,7 @@
             <div class="card-header">{{isset($detailDosen)? 'Edit' : 'Tambah'}} data Dosen</div>
             <div class="card-body">
                 <form method="POST" action="{{ isset($detailDosen) ? 
-                route('update', ['nidn'=>$detailDosen->nidn]) :
+                route('update-dosen', ['nidn'=>$detailDosen->nidn]) :
                 route('store-dosen')}}">
                     {{-- dibutuhkan laravel untuk mengirim data --}}
                     @csrf
