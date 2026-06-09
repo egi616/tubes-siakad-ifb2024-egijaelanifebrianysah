@@ -2,12 +2,11 @@
 {{-- untuk memanggil content --}}
 @section('content')
     <div class = "container mt-2">
-        <h2>Halaman Manajemen Dosen</h2>
+        <h2 class="text-xl">Halaman Manajemen Dosen</h2>
         <div class= "card p-3">
             <div class= 'mb2'>
                 <a href="{{route('admin.form-create-dosen')}}" class="btn btn-primary btn-sm"> Tambah data </a>
             </div>
-
             <table class="table table-bordered table-hover table-striped">
                 <thead>
                     <tr>

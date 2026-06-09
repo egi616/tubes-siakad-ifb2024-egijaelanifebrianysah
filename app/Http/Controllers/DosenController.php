@@ -15,7 +15,7 @@ class DosenController extends Controller
         //
         $dataDosen = Dosen::all();
 
-        return view('pages.dosen.daftar-dosen', compact('dataDosen'));
+        return view('admin.dosen.daftar-dosen', compact('dataDosen'));
 
     }
 
@@ -25,7 +25,7 @@ class DosenController extends Controller
     public function create()
     {
         //
-        return view('pages.dosen.form-dosen');
+        return view('admin.dosen.form-dosen');
     }
 
     /**
@@ -51,7 +51,7 @@ class DosenController extends Controller
         //
         $detailDosen = Dosen :: findOrFail($nidn);
 
-        return view('pages.dosen.detail-dosen', compact('detailDosen'));
+        return view('admin.dosen.detail-dosen', compact('detailDosen'));
     }
 
     /**
@@ -61,7 +61,7 @@ class DosenController extends Controller
     {
         //
         $detailDosen = Dosen::findOrFail($nidn);
-        return view('pages.dosen.form-dosen', compact('detailDosen'));
+        return view('admin.dosen.form-dosen', compact('detailDosen'));
     }
 
     /**

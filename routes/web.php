@@ -15,8 +15,8 @@ use App\Http\Controllers\AuthController;
 //     return view('pages.beranda');
 // });
 
-Route::get('/',[AuthController::class, 'index'])->name('login');
-Route::post('/',[AuthController::class, 'login']);
+Route::get('/login',[AuthController::class, 'index'])->name('login');
+Route::post('/login',[AuthController::class, 'login']);
 
 Route::prefix('admin')->middleware(['auth', 'role:admin'])->name('admin.')->group(function () {
     Route::get('/dosen', [DosenController::class, 'index'])->name('dosen');

@@ -16,7 +16,7 @@ class KrsController extends Controller
 
         $dataKrs = Krs::all();
 
-        return view('pages.Krs.daftar-krs', compact('dataKrs'));
+        // return view('pages.Krs.daftar-krs', compact('dataKrs'));
     }
 
     /**

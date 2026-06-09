@@ -15,7 +15,7 @@ class MataKuliahController extends Controller
         //
         $dataMataKuliah = MataKuliah::all();
 
-        return view('pages.matakuliah.daftar-matakuliah', compact('dataMataKuliah'));
+        return view('admin.matakuliah.daftar-matakuliah', compact('dataMataKuliah'));
     }
 
     /**
@@ -24,7 +24,7 @@ class MataKuliahController extends Controller
     public function create()
     {
         //
-        return view('pages.matakuliah.form-matakuliah');
+        return view('admin.matakuliah.form-matakuliah');
     }
 
     /**

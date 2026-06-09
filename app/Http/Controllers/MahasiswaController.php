@@ -16,7 +16,7 @@ class MahasiswaController extends Controller
         //
         $dataMahasiswa = Mahasiswa::with('dosen')->get();
         
-        return view('pages.mahasiswa.daftar-mahasiswa', compact('dataMahasiswa'));
+        return view('admin.mahasiswa.daftar-mahasiswa', compact('dataMahasiswa'));
     }
 
     /**
@@ -27,7 +27,7 @@ class MahasiswaController extends Controller
         //
         $dataDosen = Dosen::all();
 
-        return view('pages.mahasiswa.form-mahasiswa', compact('dataDosen'));
+        return view('admin.mahasiswa.form-mahasiswa', compact('dataDosen'));
     }
 
     /**
@@ -65,7 +65,7 @@ class MahasiswaController extends Controller
         //
         $detailMahasiswa = Mahasiswa::findOrFail($npm);
         $dataDosen = Dosen::all();
-        return view('pages.mahasiswa.form-mahasiswa', compact('detailMahasiswa', 'dataDosen'));
+        return view('admin.mahasiswa.form-mahasiswa', compact('detailMahasiswa', 'dataDosen'));
     }
 
     /**
