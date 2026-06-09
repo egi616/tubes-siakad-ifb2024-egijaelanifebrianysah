@@ -39,21 +39,26 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{url ('/beranda')}}">Beranda</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{url('/dosen')}}">Dosen</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{url('/mahasiswa')}}">Mahasisswa</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{url('/matakuliah')}}">Mata Kuliah</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{url('/krs')}}">Kartu Rencana Studi</a>
-                    </li>
+                    @if(Auth::check())
+                        @if(Auth::user()->role === 'admin')
+                            {{-- <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="{{url ('/beranda')}}">Beranda</a>
+                            </li> --}}
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="{{route('admin.dosen')}}">Dosen</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="{{route('admin.mahasiswa')}}">Mahasisswa</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="{{route('admin.matakuliah')}}">Mata Kuliah</a>
+                            </li>
+                        @elseif(Auth::user()->role === 'mahasiswa')
+                            <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="{{route('mahasiswa.krs')}}">Kartu Rencana Studi</a>
+                            </li>
+                        @endif
+                    @endif
                 </ul>
             </div>
         </div>

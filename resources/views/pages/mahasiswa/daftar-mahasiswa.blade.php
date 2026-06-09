@@ -5,7 +5,7 @@
         <h2>Halaman Manajemen Mahasiswa</h2>
         <div class= "card p-3">
             <div class= 'mb2'>
-                <a href="{{route('form-create-mahasiswa')}}" class="btn btn-primary btn-sm"> Tambah data </a>
+                <a href="{{route('admin.form-create-mahasiswa')}}" class="btn btn-primary btn-sm"> Tambah data </a>
             </div>
 
             <table class="table table-bordered table-hover table-striped">
@@ -25,13 +25,13 @@
                         <td>{{$item->nidn}}</td>
                         <td>{{$item->nama}}</td>
                         <td class="text-center">
-                            <form action="{{route ('delete-mahasiswa', ['npm'=>$item->npm])}}" method="POST" onsubmit="return confirm ('Apakah anda yakin akan menghapus data mahasiswa ini?')"> 
+                            <form action="{{route ('admin.delete-mahasiswa', ['npm'=>$item->npm])}}" method="POST" onsubmit="return confirm ('Apakah anda yakin akan menghapus data mahasiswa ini?')"> 
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
                             </form>
-                            <a href="{{route ('edit-mahasiswa', ['npm'=>$item->npm])}}" class="btn btn-warning btn-sm">Edit</a>
-                            <a href="{{route ('detail-mahasiswa', ['npm'=>$item->npm])}}" class="btn btn-info btn-sm">Detail</a>
+                            <a href="{{route ('admin.edit-mahasiswa', ['npm'=>$item->npm])}}" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="{{route ('admin.detail-mahasiswa', ['npm'=>$item->npm])}}" class="btn btn-info btn-sm">Detail</a>
                         </td>
                     </tr>
                     @endforeach

@@ -20,4 +20,8 @@ class Dosen extends Model
     {
         return $this->hasMany(Mahasiswa::class, 'nidn', 'nidn');
     }
+
+    public function jadwal(){
+        return $this->hasMany(Jadwal::class, 'nidn', 'nidn');
+    }
 }

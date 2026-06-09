@@ -5,7 +5,7 @@
         <h2>Halaman Manajemen Dosen</h2>
         <div class= "card p-3">
             <div class= 'mb2'>
-                <a href="{{route('form-create-dosen')}}" class="btn btn-primary btn-sm"> Tambah data </a>
+                <a href="{{route('admin.form-create-dosen')}}" class="btn btn-primary btn-sm"> Tambah data </a>
             </div>
 
             <table class="table table-bordered table-hover table-striped">
@@ -24,13 +24,13 @@
                         <td>{{$item->nidn}}</td>
                         <td>{{$item->nama}}</td>
                         <td class="text-center">
-                            <form action="{{route ('delete-dosen', ['nidn'=>$item->nidn])}}" method="POST" onsubmit="return confirm ('Apakah anda yakin akan menghapus data dosen ini?')"> 
+                            <form action="{{route ('admin.delete-dosen', ['nidn'=>$item->nidn])}}" method="POST" onsubmit="return confirm ('Apakah anda yakin akan menghapus data dosen ini?')"> 
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
                             </form>
-                            <a href="{{route ('edit-dosen', ['nidn'=>$item->nidn])}}" class="btn btn-warning btn-sm">Edit</a>
-                            <a href="{{route ('detail-dosen', ['nidn'=>$item->nidn])}}" class="btn btn-info btn-sm">Detail</a>
+                            <a href="{{route ('admin.edit-dosen', ['nidn'=>$item->nidn])}}" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="{{route ('admin.detail-dosen', ['nidn'=>$item->nidn])}}" class="btn btn-info btn-sm">Detail</a>
                         </td>
                     </tr>
                     @endforeach

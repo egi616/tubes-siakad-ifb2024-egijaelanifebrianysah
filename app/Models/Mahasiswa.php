@@ -20,4 +20,12 @@ class Mahasiswa extends Model
     {
         return $this->belongsTo(Dosen::class, 'nidn', 'nidn');
     }
+
+    public function krs(){
+        return $this->hasMany(Krs::class, 'npm', 'npm');
+    }
+
+    public function matakuliah(){
+        return $this->belongsToMany(Matakuliah::class, 'krs', 'npm', 'kode_matakuliah');
+    }
 }

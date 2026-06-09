@@ -15,4 +15,13 @@ class MataKuliah extends Model
 
     protected $fillable=['kode_matakuliah','nama_matakuliah','sks'];
 
+    public function jadwal()
+    {
+        return $this->hasMany(Jadwal::class, 'kode_matakuliah', 'kode_matakuliah');
+    }
+
+    public function krs()
+    {
+        return $this->hasMany(Krs::class, 'kode_matakuliah', 'kode_matakuliah');
+    }
 }
