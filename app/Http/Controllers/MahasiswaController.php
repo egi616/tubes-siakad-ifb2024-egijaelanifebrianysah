@@ -25,9 +25,10 @@ class MahasiswaController extends Controller
     public function create()
     {
         //
+        $dataMahasiswa = Mahasiswa::all();
         $dataDosen = Dosen::all();
 
-        return view('admin.mahasiswa.form-mahasiswa', compact('dataDosen'));
+        return view('admin.mahasiswa.form-mahasiswa', compact('dataMahasiswa','dataDosen'));
     }
 
     /**

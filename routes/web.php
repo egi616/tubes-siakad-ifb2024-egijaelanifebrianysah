@@ -6,6 +6,7 @@ use App\Http\Controllers\MataKuliahController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\KrsController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\JadwalController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -42,6 +43,14 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->name('admin.')->grou
     Route::delete('/mahasiswa/{npm}/delete-data-mahasiswa', [MahasiswaController::class, 'destroy'])->name('delete-mahasiswa');
     Route::get('/edit-mahasiswa/{npm}/edit-data-mahasiswa', [MahasiswaController::class, 'edit'])->name('edit-mahasiswa');
     Route::put('/update-mahasiswa/{npm}/update-data-mahasiswa', [MahasiswaController::class, 'update'])->name('update-mahasiswa');
+
+    Route::get('/jadwal', [JadwalController::class, 'index'])->name('jadwal');
+    Route::get('/jadwal/create', [JadwalController::class, 'create'])->name('form-create-jadwal');
+    Route::post('/jadwal/store', [JadwalController::class, 'store'])->name('store-jadwal');
+    Route::get('/detail-jadwal/{id}/detail-data-jadwal', [JadwalController::class, 'show'])->name('detail-jadwal');
+    Route::delete('/jadwal/{id}/delete-data-jadwal', [JadwalController::class, 'destroy'])->name('delete-jadwal');
+    Route::get('/edit-jadwal/{id}/edit-data-jadwal', [JadwalController::class, 'edit'])->name('edit-jadwal');
+    Route::put('/update-jadwal/{id}/update-data-jadwal', [JadwalController::class, 'update'])->name('update-jadwal');
 
     Route::post('/logout',[AuthController::class, 'logout'])->name('logout');
 });

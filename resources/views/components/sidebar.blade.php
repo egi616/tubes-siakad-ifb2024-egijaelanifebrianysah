@@ -1,4 +1,4 @@
-<aside class="flex h-screen w-64 shrink-0 flex-col bg-primary-950 text-white shadow-lg">
+<aside class="flex h-screen w-64 shrink-0 flex-col bg-indigo-950 text-white shadow-lg">
   <div class="flex h-16 items-center border-b border-white-800 px-6">
     <span class="text-xl font-bold tracking-wider">Siakad</span>
   </div>
@@ -18,9 +18,9 @@
                 <span class="text-sm font-medium">Manajemen Data Mata Kuliah</span>
             </a>
 
-            {{-- <a href="{{route('admin.jadwal')}}" class="flex items-center gap-3 rounded-lg px-4 py-3 text-gray-400 transition-colors hover:bg-gray-800 hover:text-white">
+            <a href="{{route('admin.jadwal')}}" class="flex items-center gap-3 rounded-lg px-4 py-3 text-gray-400 transition-colors hover:bg-gray-800 hover:text-white">
                 <span class="text-sm font-medium">Manajemen Data Jadwal</span>
-            </a> --}}
+            </a>
         @elseif(Auth::user()->role === 'mahasiswa')
             {{-- <a href="{{route('admin.matakuliah')}}" class="flex items-center gap-3 rounded-lg px-4 py-3 text-gray-400 transition-colors hover:bg-gray-800 hover:text-white">
                 <span class="text-sm font-medium">Manajemen Data Mata Kuliah</span>
