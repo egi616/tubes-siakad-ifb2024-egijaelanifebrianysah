@@ -14,9 +14,9 @@
 
         <main class="flex-1 overflow-y-auto p-8">
             
-            <div class="w-full mb-6">
+            {{-- <div class="w-full mb-6">
                 <x-search-bar />
-            </div>
+            </div> --}}
 
             <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
                 @yield('content')

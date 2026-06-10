@@ -30,6 +30,10 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->name('admin.')->grou
     Route::get('/matakuliah', [MataKuliahController::class, 'index'])->name('matakuliah');
     Route::get('/matakuliah/create', [MataKuliahController::class, 'create'])->name('form-create-matakuliah');
     Route::post('/matakuliah/store', [MataKuliahController::class, 'store'])->name('store-matakuliah');
+    Route::get('/detail-matakuliah/{kode_matakuliah}/detail-data-matakuliah', [MataKuliahController::class, 'show'])->name('detail-matakuliah');
+    Route::get('/edit-matakuliah/{kode_matakuliah}/edit-data-matakuliah', [MataKuliahController::class, 'edit'])->name('edit-matakuliah');
+    Route::put('/update-matakuliah/{kode_matakuliah}/update-data-matakuliah', [MataKuliahController::class, 'update'])->name('update-matakuliah');
+    Route::delete('/matakuliah/{kode_matakuliah}/delete-data-matakuliah', [MataKuliahController::class, 'destroy'])->name('delete-matakuliah');
 
     Route::get('/mahasiswa', [MahasiswaController::class, 'index'])->name('mahasiswa');
     Route::get('/mahasiswa/create', [MahasiswaController::class, 'create'])->name('form-create-mahasiswa');
@@ -39,7 +43,7 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->name('admin.')->grou
     Route::get('/edit-mahasiswa/{npm}/edit-data-mahasiswa', [MahasiswaController::class, 'edit'])->name('edit-mahasiswa');
     Route::put('/update-mahasiswa/{npm}/update-data-mahasiswa', [MahasiswaController::class, 'update'])->name('update-mahasiswa');
 
-    
+    Route::post('/logout',[AuthController::class, 'logout'])->name('logout');
 });
 
 Route::prefix('mahasiswa')->middleware(['auth', 'role:mahasiswa'])->name('mahasiswa.')->group(function () {

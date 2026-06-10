@@ -10,17 +10,11 @@ class DosenController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index()
     {
-        $search = $request->input('search');
-
-        // Query data dosen
-        $dataDosen = Dosen::when($search, function ($query, $search) {
-            return $query->where('nama', 'like', "%{$search}%")
-                        ->orWhere('nidn', 'like', "%{$search}%");
-        })->get();
-
-        return view('admin.dosen.index', compact('dataDosen'));
+        $dataDosen = Dosen::all();
+        
+        return view('admin.dosen.daftar-dosen', compact('dataDosen'));
     }
 
     /**

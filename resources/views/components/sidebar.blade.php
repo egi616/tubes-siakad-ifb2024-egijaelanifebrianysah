@@ -31,11 +31,27 @@
 
   <div class="border-t border-white-800 p-4">
     <div class="flex items-center gap-3 px-2">
-      <div class="flex h-9 w-9 items-center justify-center rounded-full bg-indigo-500 font-bold text-white">A</div>
+      <div class="flex h-9 w-9 items-center justify-center rounded-full bg-indigo-500 font-bold text-white">
+          {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
+      </div>
       <div>
         <p class="text-sm font-medium text-white">{{ auth()->user()->name }}</p>
         <p class="text-xs text-gray-400">{{ auth()->user()->email }}</p>
       </div>
     </div>
   </div>
-</aside>
+
+  <div class="border-t border-white-800 p-4">
+    <div class="flex-col gap-3 px-2">
+        <div>
+          <form method="POST" action="{{ route('admin.logout') }}">
+            @csrf
+              <x-red-button class="w-full justify-center">
+                Keluar
+              </x-red-button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </aside>
+

@@ -30,17 +30,20 @@
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{$item->nama_matakuliah}}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{$item->sks}}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm flex justify-center gap-2">
-                                {{-- <x-edit-button href="{{route('admin.edit-matakuliah', ['kode'=>$item->kode_matakuliah])}}">
+                                <x-edit-button href="{{route('admin.edit-matakuliah', ['kode_matakuliah'=>$item->kode_matakuliah])}}">
                                     Edit
-                                </x-edit-button> --}}
+                                </x-edit-button>
+                                <x-detail-button href="{{route('admin.detail-matakuliah', ['kode_matakuliah'=>$item->kode_matakuliah])}}">
+                                    Detail
+                                </x-detail-button>
                                 
-                                {{-- <form action="{{route('admin.delete-matakuliah', ['kode'=>$item->kode_matakuliah])}}" method="POST" onsubmit="return confirm('Apakah Anda yakin akan menghapus mata kuliah ini?')"> 
+                                <form action="{{route('admin.delete-matakuliah', ['kode_matakuliah'=>$item->kode_matakuliah])}}" method="POST" onsubmit="return confirm('Apakah Anda yakin akan menghapus mata kuliah ini?')"> 
                                     @csrf
                                     @method('DELETE')
                                     <x-red-button>
                                         Hapus
                                     </x-red-button>
-                                </form> --}}
+                                </form>
                             </td>
                         </tr>
                     @endforeach
