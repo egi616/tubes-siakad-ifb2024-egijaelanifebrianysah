@@ -12,7 +12,7 @@ class DosenController extends Controller
      */
     public function index()
     {
-        $dataDosen = Dosen::all();
+        $dataDosen = Dosen::paginate(6);
         
         return view('admin.dosen.daftar-dosen', compact('dataDosen'));
     }

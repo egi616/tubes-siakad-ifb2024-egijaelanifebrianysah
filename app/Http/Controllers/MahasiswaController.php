@@ -14,7 +14,7 @@ class MahasiswaController extends Controller
     public function index()
     {
         //
-        $dataMahasiswa = Mahasiswa::with('dosen')->get();
+        $dataMahasiswa = Mahasiswa::with('dosen')->paginate(6);
         
         return view('admin.mahasiswa.daftar-mahasiswa', compact('dataMahasiswa'));
     }

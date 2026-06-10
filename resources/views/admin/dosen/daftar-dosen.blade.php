@@ -46,6 +46,9 @@
                     @endforeach
                 </tbody>
             </table>
+            <div class="mt-4">
+                {{ $dataDosen->links() }}
+            </div>
         </div>
     </div>
 </div>

@@ -13,9 +13,9 @@ class MataKuliahController extends Controller
     public function index()
     {
         //
-        $dataMataKuliah = MataKuliah::all();
+        $dataMatakuliah = MataKuliah::paginate(6);
 
-        return view('admin.matakuliah.daftar-matakuliah', compact('dataMataKuliah'));
+        return view('admin.matakuliah.daftar-matakuliah', compact('dataMatakuliah'));
     }
 
     /**

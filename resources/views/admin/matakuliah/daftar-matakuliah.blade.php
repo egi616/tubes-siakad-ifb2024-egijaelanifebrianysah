@@ -23,7 +23,7 @@
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-primary-950">
-                    @foreach ($dataMataKuliah as $item)
+                    @foreach ($dataMatakuliah as $item)
                         <tr class="hover:bg-gray-50">
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{$loop->iteration}}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{$item->kode_matakuliah}}</td>
@@ -49,6 +49,9 @@
                     @endforeach
                 </tbody>
             </table>
+            <div class="mt-4">
+                {{ $dataMatakuliah->links() }}
+            </div>
         </div>
     </div>
 </div>

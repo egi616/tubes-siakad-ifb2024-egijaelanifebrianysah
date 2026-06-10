@@ -2,6 +2,6 @@
 {{-- untuk memanggil content --}}
 @section('content')
     <div class = "container mt-2">
-        <h1>Selamat Datang di Beranda</h1>
+        <h1>Selamat Datang di dashboard admin</h1>
     </div>
 @endsection

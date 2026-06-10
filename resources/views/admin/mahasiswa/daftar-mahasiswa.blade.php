@@ -48,6 +48,9 @@
                     @endforeach
                 </tbody>
             </table>
+            <div class="mt-4">
+                {{ $dataMahasiswa->links() }}
+            </div>
         </div>
     </div>
 </div>
