@@ -1,40 +1,52 @@
 @extends('layouts.template')
 {{-- untuk memanggil content --}}
 @section('content')
-    <div class = "container mt-2">
-        <h2 class="text-xl">Halaman Manajemen Dosen</h2>
-        <div class= "card p-3">
-            <div class= 'mb2'>
-                <a href="{{route('admin.form-create-dosen')}}" class="btn btn-primary btn-sm"> Tambah data </a>
-            </div>
-            <table class="table table-bordered table-hover table-striped">
-                <thead>
+<div class="container mx-auto mt-6">
+    <h2 class="text-2xl font-bold mb-4">Halaman Manajemen Dosen</h2>
+    
+    <div class="bg-white p-6 rounded-lg shadow-md">
+        <div class="mb-4">
+            <x-primary-button href="{{route('admin.form-create-dosen')}}">
+                Tambah Data
+            </x-primary-button>
+        </div>
+
+        <div class="overflow-x-auto">
+            <table class="min-w-full divide-y divide-primary-950">
+                <thead class="bg-gray-50">
                     <tr>
-                        <th scope="col">No</th>
-                        <th scope="col">Nidn</th>
-                        <th scope="col">Nama</th>
-                        <th scope="col">Aksi</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">No</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">NIDN</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama</th>
+                        <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Aksi</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="bg-white divide-y divide-primary-950">
                     @foreach ($dataDosen as $item)
-                        <tr>
-                        <th scope="row" class="text-center">{{$loop->iteration}}</th>
-                        <td>{{$item->nidn}}</td>
-                        <td>{{$item->nama}}</td>
-                        <td class="text-center">
-                            <form action="{{route ('admin.delete-dosen', ['nidn'=>$item->nidn])}}" method="POST" onsubmit="return confirm ('Apakah anda yakin akan menghapus data dosen ini?')"> 
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
-                            </form>
-                            <a href="{{route ('admin.edit-dosen', ['nidn'=>$item->nidn])}}" class="btn btn-warning btn-sm">Edit</a>
-                            <a href="{{route ('admin.detail-dosen', ['nidn'=>$item->nidn])}}" class="btn btn-info btn-sm">Detail</a>
-                        </td>
-                    </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{$loop->iteration}}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{$item->nidn}}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{$item->nama}}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm flex justify-center gap-2">
+                                <x-edit-button href="{{route('admin.edit-dosen', ['nidn'=>$item->nidn])}}">
+                                    Edit
+                                </x-edit-button>
+                                <x-detail-button href="{{route('admin.detail-dosen', ['nidn'=>$item->nidn])}}">
+                                    Detail
+                                </x-detail-button>
+                                <form action="{{route('admin.delete-dosen', ['nidn'=>$item->nidn])}}" method="POST" onsubmit="return confirm('Apakah Anda yakin akan menghapus data ini?')"> 
+                                    @csrf
+                                    @method('DELETE')
+                                    <x-red-button>
+                                        Hapus
+                                    </x-red-button>
+                                </form>
+                            </td>
+                        </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
     </div>
+</div>
 @endsection

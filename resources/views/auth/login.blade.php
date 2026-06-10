@@ -27,9 +27,12 @@
                         <x-input-label for="password" value="Password" />
                         <x-text-input type="password" id="password" name="password" required />
                     </div>
-                    <x-primary-button>
-                        Masuk ke Akun
-                    </x-primary-button>
+                    <div class ="flex justify-center">
+                        <x-primary-button>
+                            Masuk ke Akun
+                        </x-primary-button>
+                    </div>
+                    
                 </div>
             </form>
 

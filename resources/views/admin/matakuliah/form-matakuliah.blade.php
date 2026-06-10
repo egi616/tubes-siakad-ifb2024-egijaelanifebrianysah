@@ -1,38 +1,47 @@
 @extends('layouts.template')
-{{-- untuk memanggil content --}}
+
 @section('content')
-    <div class = "container mt-2">
-        <h2>Form Mata Kuliah</h2>
-        <div class= "card">
-            <div class="card-header">Tambah Mata Kuliah</div>
-            <div class="card-body">
-                <form action="{{route('store-matakuliah')}}" method="POST">
-                    {{-- dibutuhkan laravel untuk mengirim data --}}
-                    @csrf 
-                    <div class="mb-3">
-                        <label class="form-label">Kode Mata Kuliah</label>
-                        <input name="kode_matakuliah" type="text" class="form-control">
-                        @error('kode_matakuliah')
-                            <div class="form-text">{{$message}} </div>
-                        @enderror
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Nama Mata Kuliah</label>
-                        <input name="nama_matakuliah" type="text" class="form-control">
-                        @error('nama_matakuliah')
-                            <div class="form-text">{{$message}} </div>
-                        @enderror
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Sks</label>
-                        <input name="sks" type="text" class="form-control">
-                        @error('sks')
-                            <div class="form-text">{{$message}} </div>
-                        @enderror
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
-            </div>
+<div class="container mx-auto mt-6">
+    <h2 class="text-2xl font-bold mb-4">Form Mata Kuliah</h2>
+    
+    <div class="bg-white p-6 rounded-lg shadow-md">
+        <div class="mb-4 text-lg font-semibold text-slate-800">
+            Tambah Data Mata Kuliah
         </div>
+
+        <form method="POST" action="{{ route('admin.store-matakuliah') }}">
+            @csrf
+
+            <div class="mb-4">
+                <x-input-label for="kode_matakuliah" value="Kode Mata Kuliah" />
+                <x-text-input id="kode_matakuliah" name="kode_matakuliah" type="text" class="mt-1" value="{{ old('kode_matakuliah') }}" />
+                @error('kode_matakuliah')
+                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                @enderror
+            </div>
+
+            <div class="mb-4">
+                <x-input-label for="nama_matakuliah" value="Nama Mata Kuliah" />
+                <x-text-input id="nama_matakuliah" name="nama_matakuliah" type="text" class="mt-1" value="{{ old('nama_matakuliah') }}" />
+                @error('nama_matakuliah')
+                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                @enderror
+            </div>
+
+            <div class="mb-4">
+                <x-input-label for="sks" value="SKS" />
+                <x-text-input id="sks" name="sks" type="number" class="mt-1" value="{{ old('sks') }}" />
+                @error('sks')
+                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                @enderror
+            </div>
+
+            <div class="mt-6 flex justify-center">
+                <x-primary-button>
+                    Submit
+                </x-primary-button>
+            </div>
+        </form>
     </div>
+</div>
 @endsection

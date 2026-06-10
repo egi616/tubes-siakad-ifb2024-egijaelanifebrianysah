@@ -10,13 +10,17 @@ class DosenController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
-        $dataDosen = Dosen::all();
+        $search = $request->input('search');
 
-        return view('admin.dosen.daftar-dosen', compact('dataDosen'));
+        // Query data dosen
+        $dataDosen = Dosen::when($search, function ($query, $search) {
+            return $query->where('nama', 'like', "%{$search}%")
+                        ->orWhere('nidn', 'like', "%{$search}%");
+        })->get();
 
+        return view('admin.dosen.index', compact('dataDosen'));
     }
 
     /**
@@ -35,12 +39,12 @@ class DosenController extends Controller
     {
         //
         $validate = $request->validate([
-            'nidn'=>'required|min:10|unique:dosen,nidn',
-            'nama'=>'required|min:5',
+            'nidn'=>'required|min:1|unique:dosen,nidn',
+            'nama'=>'required|min:1',
         ]);
 
         Dosen::create($validate);
-        return redirect()->route('dosen');
+        return redirect()->route('admin.dosen');
     }
 
     /**
@@ -72,22 +76,20 @@ class DosenController extends Controller
         //
         $validate = $request->validate(
             [
-                'nidn'=>'required|min:10|unique:dosen,nidn,' . $nidn . ',nidn',
-                'nama'=>'required|min:5',
+                'nidn'=>'required|min:1|unique:dosen,nidn,' . $nidn . ',nidn',
+                'nama'=>'required|min:1',
             ],
 
             //custom validasi
             [
                 'nidn.required' => 'nidn tidak boleh di kosongkan',
-                'nidn.min' => 'nidn terlalu pendek, minimal 10 karakter',
                 'nidn.unique' => 'NIDN sudah terdaftar',
                 'nama.required' => 'nama tidak boleh di kosongkan',
-                'nama.min' => 'nidn terlalu pendek, minimal 5 karakter',
             ]
         );
 
         Dosen::where('nidn', $nidn)->update($validate);
-        return redirect()->route('dosen')->with('success','Data dosen berhasil di rubah');
+        return redirect()->route('admin.dosen')->with('success','Data dosen berhasil di rubah');
     }
 
     /**
@@ -99,6 +101,6 @@ class DosenController extends Controller
         $dataDosen = Dosen::findOrFail($nidn);
         $dataDosen->delete();
 
-        return redirect()->route('dosen')->with('succes', 'Data dosen berhasil di hapus');
+        return redirect()->route('admin.dosen')->with('succes', 'Data dosen berhasil di hapus');
     }
 }

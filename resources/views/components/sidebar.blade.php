@@ -6,8 +6,8 @@
   <nav class="flex-1 space-y-2 overflow-y-auto px-4 py-6">
     @if(Auth::check())
         @if(Auth::user()->role === 'admin')
-            <a href="{{route('admin.dosen')}}" class="flex items-center gap-3 rounded-lg bg-indigo-600 px-4 py-3 text-white transition-colors">
-                <span class="text-sm font-medium">Manajemen Data Dosen</span>
+            <a href="{{route('admin.dosen')}}" class="flex items-center gap-3 rounded-lg px-4 py-3 text-gray-400 transition-colors hover:bg-gray-800 hover:text-white">
+              <span class="text-sm font-medium">Manajemen Data Dosen</span>
             </a>
 
             <a href="{{route('admin.mahasiswa')}}" class="flex items-center gap-3 rounded-lg px-4 py-3 text-gray-400 transition-colors hover:bg-gray-800 hover:text-white">

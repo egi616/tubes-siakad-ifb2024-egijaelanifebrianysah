@@ -15,8 +15,8 @@ use App\Http\Controllers\AuthController;
 //     return view('pages.beranda');
 // });
 
-Route::get('/login',[AuthController::class, 'index'])->name('login');
-Route::post('/login',[AuthController::class, 'login']);
+Route::get('/',[AuthController::class, 'index'])->name('login');
+Route::post('/',[AuthController::class, 'login']);
 
 Route::prefix('admin')->middleware(['auth', 'role:admin'])->name('admin.')->group(function () {
     Route::get('/dosen', [DosenController::class, 'index'])->name('dosen');
@@ -24,9 +24,9 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->name('admin.')->grou
     Route::post('/dosen/store', [DosenController::class, 'store'])->name('store-dosen');
     Route::get('/detail-dosen/{nidn}/detail-data-dosen', [DosenController::class, 'show'])->name('detail-dosen');
     Route::delete('/dosen/{nidn}/delete-data-dosen', [DosenController::class, 'destroy'])->name('delete-dosen');
-
     Route::get('/edit-dosen/{nidn}/edit-data-dosen', [DosenController::class, 'edit'])->name('edit-dosen');
     Route::put('/update-dosen/{nidn}/update-data-dosen', [DosenController::class, 'update'])->name('update-dosen');
+    
     Route::get('/matakuliah', [MataKuliahController::class, 'index'])->name('matakuliah');
     Route::get('/matakuliah/create', [MataKuliahController::class, 'create'])->name('form-create-matakuliah');
     Route::post('/matakuliah/store', [MataKuliahController::class, 'store'])->name('store-matakuliah');

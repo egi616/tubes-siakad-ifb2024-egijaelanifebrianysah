@@ -37,13 +37,13 @@ class MahasiswaController extends Controller
     {
         //
         $validate = $request->validate([
-            'npm'=>'required|min:10|unique:mahasiswa,npm',
-            'nidn'=>'required|min:10',
+            'npm'=>'required|min:1|unique:mahasiswa,npm',
+            'nidn'=>'required|min:1',
             'nama'=>'required|min:1',
         ]);
 
         Mahasiswa::create($validate);
-        return redirect()->route('mahasiswa');
+        return redirect()->route('admin.mahasiswa');
     }
 
     /**
@@ -54,7 +54,7 @@ class MahasiswaController extends Controller
         //
         $detailMahasiswa = Mahasiswa :: findOrFail($npm);
 
-        return view('pages.mahasiswa.detail-mahasiswa', compact('detailMahasiswa'));
+        return view('admin.mahasiswa.detail-mahasiswa', compact('detailMahasiswa'));
     }
 
     /**
@@ -76,25 +76,23 @@ class MahasiswaController extends Controller
         //
         $validate = $request->validate(
             [
-                'npm'=>'required|min:10|unique:mahasiswa,npm,' . $npm . ',npm',
-                'nidn'=>'required|min:10',
+                'npm'=>'required|min:1|unique:mahasiswa,npm,' . $npm . ',npm',
+                'nidn'=>'required|min:1',
                 'nama'=>'required|min:1',
             ],
 
             //custom validasi
             [
                 'npm.required' => 'npm tidak boleh di kosongkan',
-                'npm.min' => 'npm terlalu pendek, minimal 10 karakter',
                 'npm.unique' => 'npm sudah terdaftar',
                 'nidn.required' => 'nidn tidak boleh di kosongkan',
-                'nidn.min' => 'nidn terlalu pendek, minimal 10 karakter',
                 'nama.required' => 'nama tidak boleh di kosongkan',
                 'nama.min' => 'nidn terlalu pendek, minimal 1 karakter',
             ]
         );
 
         Mahasiswa::where('npm', $npm)->update($validate);
-        return redirect()->route('mahasiswa')->with('success','Data Mahasiswa berhasil di rubah');
+        return redirect()->route('admin.mahasiswa')->with('success','Data Mahasiswa berhasil di rubah');
     }
 
     /**
@@ -106,6 +104,6 @@ class MahasiswaController extends Controller
         $dataMahasiswa = Mahasiswa::findOrFail($npm);
         $dataMahasiswa->delete();
 
-        return redirect()->route('mahasiswa')->with('succes', 'Data mahasiswa berhasil di hapus');
+        return redirect()->route('admin.mahasiswa')->with('succes', 'Data mahasiswa berhasil di hapus');
     }
 }
