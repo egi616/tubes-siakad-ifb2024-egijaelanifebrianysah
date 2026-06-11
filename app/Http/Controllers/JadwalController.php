@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Jadwal;
 use App\Models\MataKuliah;
 use App\Models\Dosen;
+use App\Models\Krs;
 
 class JadwalController extends Controller
 {
@@ -104,5 +105,32 @@ class JadwalController extends Controller
         $dataJadwal->delete();
 
         return redirect()->route('admin.jadwal')->with('succes', 'Data jadwal berhasil di hapus');
+    }
+
+    public function jadwalMhs(Request $request)
+    {
+        $npm = auth()->user()->npm;
+    
+        $kodeAmbil = Krs::where('npm', $npm)->pluck('kode_matakuliah');
+
+        if ($kodeAmbil->isEmpty()) {
+            $jadwal = collect(); 
+            return view('mahasiswa.jadwal.jadwal-kuliah', compact('jadwal'));
+        }
+
+        $query = Jadwal::with(['dosen', 'matakuliah'])
+            ->whereIn('kode_matakuliah', $kodeAmbil)
+            ->orderByRaw("FIELD(hari, 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu')")
+            ->orderBy('jam');
+
+        $jadwalRaw = $query->get();
+
+        $jadwalRaw = $jadwalRaw->unique('kode_matakuliah');
+
+        $jadwal = $jadwalRaw->groupBy(function($item) {
+            return $item->hari ?: 'Belum Ditentukan';
+        });
+
+        return view('mahasiswa.jadwal.jadwal-kuliah', compact('jadwal'));
     }
 }

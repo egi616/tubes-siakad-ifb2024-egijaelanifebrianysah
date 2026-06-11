@@ -44,11 +44,11 @@
             </div>
         </div>
 
-        {{-- <div class="bg-slate-50 px-6 py-4 flex justify-end">
+        <div class="bg-slate-50 px-6 py-4 flex justify-end">
             <a href="{{ route('admin.edit-jadwal', ['id' => $detailJadwal->id]) }}" class="inline-flex items-center px-4 py-2 bg-yellow-500 hover:bg-yellow-600 text-white text-sm font-semibold rounded-md transition">
                 Edit Data
             </a>
-        </div> --}}
+        </div>
     </div>
 </div>
 @endsection

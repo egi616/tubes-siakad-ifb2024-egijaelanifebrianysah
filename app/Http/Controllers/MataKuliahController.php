@@ -34,13 +34,13 @@ class MataKuliahController extends Controller
     {
         //
         $validate = $request->validate([
-            'kode_matakuliah'=>'required|min:8|unique:matakuliah,kode_matakuliah',
-            'nama_matakuliah'=>'required|min:5',
+            'kode_matakuliah'=>'required|min:1|unique:matakuliah,kode_matakuliah',
+            'nama_matakuliah'=>'required|min:1',
             'sks'=>'required|numeric',
         ]);
 
         MataKuliah::create($validate);
-        return redirect()->route('matakuliah');
+        return redirect()->route('admin.matakuliah');
     }
 
     /**

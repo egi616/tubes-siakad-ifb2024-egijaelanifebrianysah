@@ -11,9 +11,14 @@
     <div class="min-h-screen flex items-center justify-center p-4">
         <div class="w-full max-w-md bg-white p-8 rounded-2xl shadow-lg">
 
+            <div class="flex justify-center mb-4">
+                <img src="{{ asset('images/logo.png') }}"
+                    alt="Logo"
+                    class="w-34 h-34 object-contain">
+            </div>
+
             <div class="text-center mb-8">
                 <h2 class="text-3xl font-bold text-slate-900 tracking-tight">Selamat Datang</h2>
-                <p class="text-sm text-slate-500 mt-2">Silakan masuk untuk melanjutkan</p>
             </div>
             
             <form action="{{route('login')}}" method="POST">

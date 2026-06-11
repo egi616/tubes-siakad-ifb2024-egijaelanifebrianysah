@@ -16,8 +16,13 @@ use App\Http\Controllers\JadwalController;
 //     return view('pages.beranda');
 // });
 
+
 Route::get('/',[AuthController::class, 'index'])->name('login');
 Route::post('/',[AuthController::class, 'login']);
+
+Route::middleware(['auth'])->group(function (){
+    Route::post('/logout',[AuthController::class, 'logout'])->name('logout');
+});
 
 Route::prefix('admin')->middleware(['auth', 'role:admin'])->name('admin.')->group(function () {
     Route::get('/dosen', [DosenController::class, 'index'])->name('dosen');
@@ -51,10 +56,12 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->name('admin.')->grou
     Route::delete('/jadwal/{id}/delete-data-jadwal', [JadwalController::class, 'destroy'])->name('delete-jadwal');
     Route::get('/edit-jadwal/{id}/edit-data-jadwal', [JadwalController::class, 'edit'])->name('edit-jadwal');
     Route::put('/update-jadwal/{id}/update-data-jadwal', [JadwalController::class, 'update'])->name('update-jadwal');
-
-    Route::post('/logout',[AuthController::class, 'logout'])->name('logout');
 });
 
 Route::prefix('mahasiswa')->middleware(['auth', 'role:mahasiswa'])->name('mahasiswa.')->group(function () {
     Route::get('/krs', [KrsController::class, 'index'])->name('krs');
+    Route::get('/jadwalperkuliahan', [JadwalController::class, 'jadwalMhs'])->name('jadwal-kuliah');
+    Route::post('/krs/store', [KrsController::class, 'store'])->name('krs-store');
+    Route::delete('/krs/{npm}/delete-data-mahasiswa', [KrsController::class, 'destroy'])->name('delete-krs');
+    Route::get('/mahasiswa/krs/export-pdf', [App\Http\Controllers\KrsController::class, 'exportPdf'])->name('export-pdf');
 });

@@ -22,9 +22,12 @@
                 <span class="text-sm font-medium">Manajemen Data Jadwal</span>
             </a>
         @elseif(Auth::user()->role === 'mahasiswa')
-            {{-- <a href="{{route('admin.matakuliah')}}" class="flex items-center gap-3 rounded-lg px-4 py-3 text-gray-400 transition-colors hover:bg-gray-800 hover:text-white">
-                <span class="text-sm font-medium">Manajemen Data Mata Kuliah</span>
-            </a> --}}
+            <a href="{{route('mahasiswa.krs')}}" class="flex items-center gap-3 rounded-lg px-4 py-3 text-gray-400 transition-colors hover:bg-gray-800 hover:text-white">
+                <span class="text-sm font-medium">Kartu Rencana Studi</span>
+            </a>
+            <a href="{{route('mahasiswa.jadwal-kuliah')}}" class="flex items-center gap-3 rounded-lg px-4 py-3 text-gray-400 transition-colors hover:bg-gray-800 hover:text-white">
+                <span class="text-sm font-medium">Jadwal Perkuliahan</span>
+            </a>
         @endif
     @endif
   </nav>
@@ -44,7 +47,7 @@
   <div class="border-t border-white-800 p-4">
     <div class="flex-col gap-3 px-2">
         <div>
-          <form method="POST" action="{{ route('admin.logout') }}">
+          <form method="POST" action="{{ route('logout') }}">
             @csrf
               <x-red-button class="w-full justify-center">
                 Keluar
