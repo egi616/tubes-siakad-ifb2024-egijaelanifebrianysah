@@ -38,4 +38,4 @@ Struktur direktori untuk gambar screenshot halaman aplikasi:
 
 ## d. Link Hosting
 Aplikasi dapat diakses dengan URL berikut:
-* **URL Aplikasi:** [https://domain-anda.com](https://domain-anda.com)
+* **URL Aplikasi:** [https://tubes-siakad-ifb2024-egijaelanifebrianysah-production.up.railway.app/](https://tubes-siakad-ifb2024-egijaelanifebrianysah-production.up.railway.app/)
